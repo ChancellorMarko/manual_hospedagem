@@ -1,22 +1,23 @@
-## Intro:
+# Intro
 
 Esse é um guia compilado por mim para que futuramente eu tenha ideia do que realizei para a configuração do meu servidor pessoal.
 
 Este guia contará com uma lista de passos que pode te ajudar (e me ajudar) a ter seu próprio servidor rodando em casa para desfrutar de NextCloud, piHole e outras ferramentas que podem ajudar a ter um melhor conhecimento de redes e também se livrar de serviços como Google Cloud e OneDrive.
 
 ---
-## Setup:
+
+## Setup
 
 Para esse guia eu, pessoalmente estarei utilizando um Raspberry Pi 5 4GB como maquina principal. Caso queira é possível utilizar qualquer maquina que seja x86 ou ARM64 (aarch64), tendo em mente que essa maquina deve contar com um suporte no minimo OK.
 
-### Instalação do OS (Sistema Operacional):
+### Instalação do OS (Sistema Operacional)
 
 Como utilizarei um Raspberry Pi, irei utilizar um método mais simples e convencional para realizar a instalação do sistema operacional. Para isso utilizarei o [RaspberryPi Imager](https://www.raspberrypi.com/software/). Como estou utilizando Linux para fazer esse processo recomendo baixar a [AppImage](https://downloads.raspberrypi.com/imager/imager_latest_amd64.AppImage) para te salvar em dor de cabeça e perca de tempo com versões desatualizados que são disponibilizadas por cada Distro.
 
 Apos baixar o arquivo AppImage entre na pasta onde o arquivo foi salvo e execute-o com o comando: `sudo ./imager_2.0.4_amd64.AppImage`
 
 **Passo a passo**:
-1. Selecione o dispositivo que irá utilizar: [[1_screen.png]]
+1. Selecione o dispositivo que irá utilizar: !(exemplo)[img/1_screen.png]
 2. Selecione seu sistema operacional de preferencia, no meu caso utilizarei outros sistemas operacionais da própria Raspberry, como o Rasp_OS - Lite (64 bit): [[2_screen.png]]
 3. Insira as informações pertinentes de sua preferência conforme o que for pedido.
 4. Após configurar todas as informações pertinentes nas telas anteriores, você terá uma tela de acesso remoto que dependendo da sua intenção pode ser ou não interessante. Caso você queria acessar essa maquina remotamente para configuração via sua rede local (LAN) habilite a função SSH. Você tem duas opções para login via SSH:
