@@ -17,8 +17,9 @@ Como utilizarei um Raspberry Pi, irei utilizar um método mais simples e convenc
 Apos baixar o arquivo AppImage entre na pasta onde o arquivo foi salvo e execute-o com o comando: `sudo ./imager_2.0.4_amd64.AppImage`
 
 **Passo a passo**:
-1. Selecione o dispositivo que irá utilizar: !(exemplo)[img/1_screen.png]
-2. Selecione seu sistema operacional de preferencia, no meu caso utilizarei outros sistemas operacionais da própria Raspberry, como o Rasp_OS - Lite (64 bit): [[2_screen.png]]
+
+1. Selecione o dispositivo que irá utilizar: ![exemplo](https://github.com/ChancellorMarko/manual_hospedagem/blob/main/img/1_screen.png)
+2. Selecione seu sistema operacional de preferencia, no meu caso utilizarei outros sistemas operacionais da própria Raspberry, como o Rasp_OS - Lite (64 bit): ![exemplo](https://github.com/ChancellorMarko/manual_hospedagem/blob/main/img/2_screen.png)
 3. Insira as informações pertinentes de sua preferência conforme o que for pedido.
 4. Após configurar todas as informações pertinentes nas telas anteriores, você terá uma tela de acesso remoto que dependendo da sua intenção pode ser ou não interessante. Caso você queria acessar essa maquina remotamente para configuração via sua rede local (LAN) habilite a função SSH. Você tem duas opções para login via SSH:
 	- Senha: com essa opção você poderá escolher uma senha para realizar o login via sua rede, porém essa opção é insegura caso quiser deixar essa maquina exposta na rede publica.
