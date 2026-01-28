@@ -1,4 +1,4 @@
-# Intro
+# Introdução
 
 Esse é um guia compilado por mim para que futuramente eu tenha ideia do que realizei para a configuração do meu servidor pessoal.
 
@@ -8,33 +8,33 @@ Este guia contará com uma lista de passos que pode te ajudar (e me ajudar) a te
 
 ## Setup
 
-Para esse guia eu, pessoalmente estarei utilizando um Raspberry Pi 5 4GB como maquina principal. Caso queira é possível utilizar qualquer maquina que seja x86 ou ARM64 (aarch64), tendo em mente que essa maquina deve contar com um suporte no minimo OK.
+Para esse guia, será utilizado um Raspberry Pi 5 4 GB como máquina principal. Caso queira, é possível utilizar qualquer máquina que seja x86 ou ARM64 (aarch64), tendo em mente que essa máquina deve contar com um suporte no mínimo OK.
 
 ### Instalação do OS (Sistema Operacional)
 
-Como utilizarei um Raspberry Pi, irei utilizar um método mais simples e convencional para realizar a instalação do sistema operacional. Para isso utilizarei o [RaspberryPi Imager](https://www.raspberrypi.com/software/). Como estou utilizando Linux para fazer esse processo recomendo baixar a [AppImage](https://downloads.raspberrypi.com/imager/imager_latest_amd64.AppImage) para te salvar em dor de cabeça e perca de tempo com versões desatualizados que são disponibilizadas por cada Distro.
+Como utilizarei um Raspberry Pi, irei utilizar um método mais simples e convencional para realizar a instalação do sistema operacional. Para isso, utilizarei o [RaspberryPi Imager](https://www.raspberrypi.com/software/). Como estou utilizando Linux para fazer esse processo, recomendo baixar a [AppImage](https://downloads.raspberrypi.com/imager/imager_latest_amd64.AppImage) para te salvar de dor de cabeça e perda de tempo com versões desatualizadas disponibilizadas por cada Distro.
 
-Apos baixar o arquivo AppImage entre na pasta onde o arquivo foi salvo e execute-o com o comando: `sudo ./imager_2.0.4_amd64.AppImage`
+Após baixar o arquivo AppImage, entre na pasta onde o arquivo foi salvo e execute-o com o comando: `sudo ./imager_2.0.4_amd64.AppImage`
 
 **Passo a passo**:
 
 1. Selecione o dispositivo que irá utilizar:
    ![exemplo](https://github.com/ChancellorMarko/manual_hospedagem/blob/main/img/1_screen.png)
-2. Selecione seu sistema operacional de preferencia, no meu caso utilizarei outros sistemas operacionais da própria Raspberry, como o Rasp_OS - Lite (64 bit):
+2. Selecione seu sistema operacional de preferência, no meu caso utilizarei outros sistemas operacionais da própria Raspberry, como o Rasp OS Lite (64 bit):
    ![exemplo](https://github.com/ChancellorMarko/manual_hospedagem/blob/main/img/2_screen.png)
-3. Insira as informações pertinentes de sua preferência conforme o que for pedido.
-4. Após configurar todas as informações pertinentes nas telas anteriores, você terá uma tela de acesso remoto que dependendo da sua intenção pode ser ou não interessante. Caso você queria acessar essa maquina remotamente para configuração via sua rede local (LAN) habilite a função SSH. Você tem duas opções para login via SSH:
-   - Senha: com essa opção você poderá escolher uma senha para realizar o login via sua rede, porém essa opção é insegura caso quiser deixar essa maquina exposta na rede publica.
-   - Chave SSH: uma das opções mais seguras caso queira deixar a maquina exposta na rede pública ou local.
+3. Insira as informações pertinentes de sua preferência conforme o que for solicitado.
+4. Após configurar todas as informações pertinentes nas telas anteriores, você terá uma tela de acesso remoto que, dependendo da sua intenção, pode ser ou não interessante. Caso você queira acessar essa máquina remotamente para configuração via sua rede local (LAN), habilite a função SSH. Você tem duas opções para login via SSH:
+   - Senha: com essa opção, você poderá escolher uma senha para realizar o login via sua rede, porém essa opção é insegura caso queira deixar essa máquina exposta na rede pública.
+   - Chave SSH: uma das opções mais seguras caso queira deixar a máquina exposta na rede pública ou local.
    - Passo a passo: ![Configuração SSH](https://github.com/ChancellorMarko/manual_hospedagem/blob/main/Configura%C3%A7%C3%A3o%20SSH.md).
-5. Caso quiser pode ativar a opção de RaspberryPi Connect, no meu caso deixarei desativado.
-6. Continue para a escrita das informações no cartão SD (**Atenção todos os dados presentes nele serão apagados**).
+5. Caso queira, pode ativar a opção de Raspberry Pi Connect, no meu caso deixarei desativado.
+6. Continue para a escrita das informações no cartão SD (**Atenção: todos os dados presentes nele serão apagados**).
 
 ### Login via SSH
 
-Com sua maquina rodando e conectada a internet você deverá descobrir o IP dessa maquina na sua rede local para realizar a conexão via SSH. Após descobrir o IP da sua maqui, geralmente algo parecido com 192.168.0.XXX, você será capaz de fazer login:
+Com sua máquina rodando e conectada à internet, você deverá descobrir o IP dessa máquina na sua rede local para realizar a conexão via SSH. Após descobrir o IP da sua máquina, geralmente algo parecido com 192.168.0.XXX, você poderá fazer login:
 
-Para isso utilize o comando abaixo para adicionar sua chave customizada:
+Para isso, utilize o comando abaixo para adicionar sua chave customizada:
 
 ```bash
 ssh-add server-key-file-name
@@ -52,17 +52,17 @@ Caso tenha problemas, tente usar a chave diretamente no comando:
 ssh -i server-key-file-name seu-usuario@ip-da-sua-maquina
 ```
 
-Com tudo funcionando corretamente mova as chaves para a pasta onde deveriam estar:
+Com tudo funcionando corretamente, mova as chaves para a pasta onde deveriam estar:
 
 ```bash
 mv server-key-file-name server-key-file-name.pub ~/.ssh/
 ```
 
-### Instalação interface web
+### Instalação da interface web
 
-Nessa parte será instalado uma interface para gerência do seu servidor, são vários os tipos de software que pode ser instalado para ter controle do seu servidor sem a necessidade de todas as vezes realizar acesso via SSH. Alguns exemplos são: [Webmin](https://webmin.com), [Ajenti](https://github.com/ajenti/ajenti), [Cockpit](https://cockpit-project.org/) ou [1Panel](https://1panel.pro/).
+Nessa parte, será instalada uma interface para gerência do seu servidor. São vários os tipos de software que podem ser instalados para ter controle do seu servidor sem a necessidade de, todas às vezes, realizar acesso via SSH. Alguns exemplos são: [Webmin](https://webmin.com), [Ajenti](https://github.com/ajenti/ajenti), [Cockpit](https://cockpit-project.org/) ou [1Panel](https://1panel.pro/).
 
-Para esse tutorial estarei utilizando o Webmin já que imagino que servirá para a maioria das pessoas. Para realizar a instalação basta seguir os seguintes passos que são uma cópia direta do site da plataforma, caso precise de instruções mais detalhadas recomendo uma leitura da pagina de [download](https://webmin.com/download/) deles.
+Para esse tutorial, estarei utilizando o Webmin, já que imagino que servirá para a maioria das pessoas. Para realizar a instalação, basta seguir os seguintes passos, os quais são uma cópia direta do site da plataforma. Caso precise de instruções mais detalhadas, recomendo uma leitura da página de [download](https://webmin.com/download/) deles.
 
 1. Setup:
 
@@ -78,11 +78,43 @@ Para sistemas Fedora/Redhat/RHEL:
 sudo dnf install webmin
 ```
 
-Para sistemas Debian/Ubunto/Mint:
+Para sistemas Debian/Ubuntu/Mint:
 
 ```bash
 apt-get install --install-recommends webmin usermin
 ```
 
 Após completar a instalação, você vai poder acessar o seu servidor via sua rede local no navegador com o endereço [https://192.168.0.xxx:10000](https://192.168.0.xxx:10000).
-Nesta interface você poderá realizar instalação de novos aplicativos, atualizações de sistema e aplicativos bem como controlar e configurar todas as coisas que achar necessário.
+Nesta interface, você poderá realizar instalação de novos aplicativos, atualizações de sistema e aplicativos, bem como controlar e configurar todas as coisas que achar necessário.
+
+## Instalação do Tailscale
+
+Essa seção será destinada à instalação de uma VPN que permite que você acesse seu servidor de forma privada e segura sem a necessidade de liberar portas e lidar com problemas de firewall ou ainda utilizar um túnel Cloudflare.
+
+Para isso, será utilizada a ferramenta [Tailscale](https://tailscale.com), ela é compatível com a maioria dos dispositivos móveis Android/Apple e computadores Linux/Windows.
+
+Para realizar o download da ferramenta, utilize o seguinte comando:
+Recomendo utilizar esse script fornecido pela própria plataforma, porém, caso você tenha problemas com esse método, sinta-se à vontade para realizar o download conforme o tutorial no [site deles](https://tailscale.com/download/linux).
+
+   ```bash
+   curl -fsSL https://tailscale.com/install.sh | sh
+   ```
+
+Após o script finalizar, o serviço do Tailscale deverá estar executando normalmente. Para continuar, você deverá fazer login com sua conta da plataforma para adicioná-lo à sua rede pessoal.
+
+Em seu servidor, acesse o terminal e digite o seguinte comando:
+
+```bash
+sudo tailscale up
+```
+
+Esse comando será executado e fornecerá um URL, acesse o endereço e realize login.
+   **Não utilize [Ctrl + c] para copiar o endereço, pois isso pode resultar em um interrompimento do processo.**
+    - Exemplo do comando que aparecerá para realizar login:
+    ```bash
+       To authenticate, visit:
+       https://login.tailscale.com/a/xxxxxxxxxxxx
+    ```
+
+Após acessar e realizar o login, o seu dispositivo deve aparecer em sua tailnet.
+![imagem]()
