@@ -110,7 +110,9 @@ sudo tailscale up
 
 Esse comando será executado e fornecerá um URL, acesse o endereço e realize login.
    **Não utilize [Ctrl + c] para copiar o endereço, pois isso pode resultar em um interrompimento do processo.**
-    - Exemplo do comando que aparecerá para realizar login:
+
+- Exemplo do comando que aparecerá para realizar login:
+
     ```bash
        To authenticate, visit:
        https://login.tailscale.com/a/xxxxxxxxxxxx
