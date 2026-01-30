@@ -29,6 +29,7 @@ Após baixar o arquivo AppImage, entre na pasta onde o arquivo foi salvo e execu
    - Passo a passo: ![Configuração SSH](https://github.com/ChancellorMarko/manual_hospedagem/blob/main/Configura%C3%A7%C3%A3o%20SSH.md).
 5. Caso queira, pode ativar a opção de Raspberry Pi Connect, no meu caso deixarei desativado.
 6. Continue para a escrita das informações no cartão SD (**Atenção: todos os dados presentes nele serão apagados**).
+   ![exemplo](https://github.com/ChancellorMarko/manual_hospedagem/blob/main/img/5_screen.png)
 
 ### Login via SSH
 
@@ -119,4 +120,4 @@ Esse comando será executado e fornecerá um URL, acesse o endereço e realize l
     ```
 
 Após acessar e realizar o login, o seu dispositivo deve aparecer em sua tailnet.
-![imagem]()
+![imagem](https://github.com/ChancellorMarko/manual_hospedagem/blob/main/img/6_screen.png)
