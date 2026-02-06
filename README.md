@@ -94,108 +94,6 @@ Esta seção será destinada à instalação do Docker para realizar a instalaç
 
 Para instalar o docker em um computador linux, utilize os seguintes comandos ou, caso queira, verifique diretamente o guia oficial em [Docker download.](https://docs.docker.com/engine/install/).
 
-### Adicione o repositório oficial do Docker:
-
-<details>
-<summary>Debian</summary>
-
-Primeiramente adicione a chave:
-
-```bash
-   # Add Docker's official GPG key:
-   sudo apt update
-   sudo apt install ca-certificates curl
-   sudo install -m 0755 -d /etc/apt/keyrings
-   sudo curl -fsSL https://download.docker.com/linux/debian/gpg -o /etc/apt/keyrings/docker.asc
-   sudo chmod a+r /etc/apt/keyrings/docker.asc
-   
-   # Add the repository to Apt sources:
-   sudo tee /etc/apt/sources.list.d/docker.sources <<EOF
-   Types: deb
-   URIs: https://download.docker.com/linux/debian
-   Suites: $(. /etc/os-release && echo "$VERSION_CODENAME")
-   Components: stable
-   Signed-By: /etc/apt/keyrings/docker.asc
-   EOF
-   
-   sudo apt update
-```
-
-Instale todos os requerimentos:
-
-```bash
-   sudo apt install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
-```
-
-</details>
-
-<details>
-<summary>Fedora</summary>
-
-Primeiramente adicione a chave:
-
-```bash
-    sudo dnf config-manager addrepo --from-repofile https://download.docker.com/linux/fedora/docker-ce.repo
-```
-
-Instale todos os requerimentos:
-
-```bash
-    sudo dnf install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
-```
-
-</details>
-
-<details>
-<summary>RHEL</summary>
-
-Primeiramente adicione a chave:
-
-```bash
-    sudo dnf -y install dnf-plugins-core
-    sudo dnf config-manager --add-repo https://download.docker.com/linux/rhel/docker-ce.repo
-```
-
-Instale todos os requerimentos:
-
-```bash
-    sudo dnf install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
-```
-
-</details>
-
-<details>
-<summary>Ubuntu</summary>
-
-Primeiramente adicione a chave:
-
-```bash
-    # Add Docker's official GPG key:
-    sudo apt update
-    sudo apt install ca-certificates curl
-    sudo install -m 0755 -d /etc/apt/keyrings
-    sudo curl -fsSL https://download.docker.com/linux/ubuntu/gpg -o /etc/apt/keyrings/docker.asc
-    sudo chmod a+r /etc/apt/keyrings/docker.asc
-
-    # Add the repository to Apt sources:
-    sudo tee /etc/apt/sources.list.d/docker.sources <<EOF
-    Types: deb
-    URIs: https://download.docker.com/linux/ubuntu
-    Suites: $(. /etc/os-release && echo "${UBUNTU_CODENAME:-$VERSION_CODENAME}")
-    Components: stable
-    Signed-By: /etc/apt/keyrings/docker.asc
-    EOF
-
-    sudo apt update
-```
-
-Instale todos os requerimentos:
-## Instalação do Docker
-
-Esta seção será destinada à instalação do Docker para realizar a instalação e configuração do Nextcloud All-in-One.
-
-Para instalar o docker em um computador linux, utilize os seguintes comandos ou, caso queira, verifique diretamente o guia oficial em [Docker download.](https://docs.docker.com/engine/install/).
-
 - **Adicione o repositório oficial do Docker e instale-o:**
 
 <details>
@@ -204,29 +102,29 @@ Para instalar o docker em um computador linux, utilize os seguintes comandos ou,
 Primeiramente adicione a chave:
 
 ```bash
-   # Add Docker's official GPG key:
-   sudo apt update
-   sudo apt install ca-certificates curl
-   sudo install -m 0755 -d /etc/apt/keyrings
-   sudo curl -fsSL https://download.docker.com/linux/debian/gpg -o /etc/apt/keyrings/docker.asc
-   sudo chmod a+r /etc/apt/keyrings/docker.asc
-   
-   # Add the repository to Apt sources:
-   sudo tee /etc/apt/sources.list.d/docker.sources <<EOF
-   Types: deb
-   URIs: https://download.docker.com/linux/debian
-   Suites: $(. /etc/os-release && echo "$VERSION_CODENAME")
-   Components: stable
-   Signed-By: /etc/apt/keyrings/docker.asc
-   EOF
-   
-   sudo apt update
+# Add Docker's official GPG key:
+sudo apt update
+sudo apt install ca-certificates curl
+sudo install -m 0755 -d /etc/apt/keyrings
+sudo curl -fsSL https://download.docker.com/linux/debian/gpg -o /etc/apt/keyrings/docker.asc
+sudo chmod a+r /etc/apt/keyrings/docker.asc
+
+# Add the repository to Apt sources:
+sudo tee /etc/apt/sources.list.d/docker.sources <<EOF
+Types: deb
+URIs: https://download.docker.com/linux/debian
+Suites: $(. /etc/os-release && echo "$VERSION_CODENAME")
+Components: stable
+Signed-By: /etc/apt/keyrings/docker.asc
+EOF
+
+sudo apt update
 ```
 
 Instale todos os requerimentos:
 
 ```bash
-   sudo apt install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+sudo apt install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
 ```
 
 </details>
@@ -237,13 +135,13 @@ Instale todos os requerimentos:
 Primeiramente adicione a chave:
 
 ```bash
-    sudo dnf config-manager addrepo --from-repofile https://download.docker.com/linux/fedora/docker-ce.repo
+sudo dnf config-manager addrepo --from-repofile https://download.docker.com/linux/fedora/docker-ce.repo
 ```
 
 Instale todos os requerimentos:
 
 ```bash
-    sudo dnf install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+sudo dnf install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
 ```
 
 </details>
@@ -254,14 +152,14 @@ Instale todos os requerimentos:
 Primeiramente adicione a chave:
 
 ```bash
-    sudo dnf -y install dnf-plugins-core
-    sudo dnf config-manager --add-repo https://download.docker.com/linux/rhel/docker-ce.repo
+sudo dnf -y install dnf-plugins-core
+sudo dnf config-manager --add-repo https://download.docker.com/linux/rhel/docker-ce.repo
 ```
 
 Instale todos os requerimentos:
 
 ```bash
-    sudo dnf install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+sudo dnf install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
 ```
 
 </details>
@@ -272,34 +170,29 @@ Instale todos os requerimentos:
 Primeiramente adicione a chave:
 
 ```bash
-    # Add Docker's official GPG key:
-    sudo apt update
-    sudo apt install ca-certificates curl
-    sudo install -m 0755 -d /etc/apt/keyrings
-    sudo curl -fsSL https://download.docker.com/linux/ubuntu/gpg -o /etc/apt/keyrings/docker.asc
-    sudo chmod a+r /etc/apt/keyrings/docker.asc
+# Add Docker's official GPG key:
+sudo apt update
+sudo apt install ca-certificates curl
+sudo install -m 0755 -d /etc/apt/keyrings
+sudo curl -fsSL https://download.docker.com/linux/ubuntu/gpg -o /etc/apt/keyrings/docker.asc
+sudo chmod a+r /etc/apt/keyrings/docker.asc
 
-    # Add the repository to Apt sources:
-    sudo tee /etc/apt/sources.list.d/docker.sources <<EOF
-    Types: deb
-    URIs: https://download.docker.com/linux/ubuntu
-    Suites: $(. /etc/os-release && echo "${UBUNTU_CODENAME:-$VERSION_CODENAME}")
-    Components: stable
-    Signed-By: /etc/apt/keyrings/docker.asc
-    EOF
+# Add the repository to Apt sources:
+sudo tee /etc/apt/sources.list.d/docker.sources <<EOF
+Types: deb
+URIs: https://download.docker.com/linux/ubuntu
+Suites: $(. /etc/os-release && echo "${UBUNTU_CODENAME:-$VERSION_CODENAME}")
+Components: stable
+Signed-By: /etc/apt/keyrings/docker.asc
+EOF
 
-    sudo apt update
+sudo apt update
 ```
 
 Instale todos os requerimentos:
 
 ```bash
-    sudo apt install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
-```
-
-</details>
-```bash
-    sudo apt install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+sudo apt install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
 ```
 
 </details>
