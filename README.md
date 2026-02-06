@@ -82,11 +82,111 @@ sudo dnf install webmin
 Para sistemas Debian/Ubuntu/Mint:
 
 ```bash
-apt-get install --install-recommends webmin usermin
+sudo apt-get install --install-recommends webmin usermin
 ```
 
 Após completar a instalação, você vai poder acessar o seu servidor via sua rede local no navegador com o endereço [https://192.168.0.xxx:10000](https://192.168.0.xxx:10000).
 Nesta interface, você poderá realizar instalação de novos aplicativos, atualizações de sistema e aplicativos, bem como controlar e configurar todas as coisas que achar necessário.
+
+## Instalação do Docker
+
+Esta seção será destinada á instalação do Dokcer para realizar a instalação e configuração do Nextcloud All-in-One.
+
+Para instalar o docker em um computador linux utilize os seguintes comando ou caso queira verifique diretamente o guia oficial em [Docker download](https://docs.docker.com/engine/install/)
+
+<details>
+<summary>Adicione o repositório oficial do Docker:<summary>
+
+- Debian:
+
+    Primeiramente adicione a chave:
+
+```bash
+   # Add Docker's official GPG key:
+   sudo apt update
+   sudo apt install ca-certificates curl
+   sudo install -m 0755 -d /etc/apt/keyrings
+   sudo curl -fsSL https://download.docker.com/linux/debian/gpg -o /etc/apt/keyrings/docker.asc
+   sudo chmod a+r /etc/apt/keyrings/docker.asc
+   
+   # Add the repository to Apt sources:
+   sudo tee /etc/apt/sources.list.d/docker.sources <<EOF
+   Types: deb
+   URIs: https://download.docker.com/linux/debian
+   Suites: $(. /etc/os-release && echo "$VERSION_CODENAME")
+   Components: stable
+   Signed-By: /etc/apt/keyrings/docker.asc
+   EOF
+   
+   sudo apt update
+```
+
+   Instale todos os requerimentos:
+
+```bash
+   sudo apt install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+```
+
+- Fedora:
+
+   Primeiramente adicione a chave:
+
+```bash
+    sudo dnf config-manager addrepo --from-repofile https://download.docker.com/linux/fedora/docker-ce.repo
+```
+
+   Instale todos os requerimentos:
+
+```bash
+    sudo dnf install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+```
+
+- RHEL:
+
+    Primeiramente adicione a chave:
+
+```bash
+    sudo dnf -y install dnf-plugins-core
+    sudo dnf config-manager --add-repo https://download.docker.com/linux/rhel/docker-ce.repo
+```
+
+   Instale todos os requerimentos:
+
+```bash
+    sudo dnf install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+```
+
+- Ubuntu:
+
+    Primeiramente adicione a chave:
+
+```bash
+    # Add Docker's official GPG key:
+    sudo apt update
+    sudo apt install ca-certificates curl
+    sudo install -m 0755 -d /etc/apt/keyrings
+    sudo curl -fsSL https://download.docker.com/linux/ubuntu/gpg -o /etc/apt/keyrings/docker.asc
+    sudo chmod a+r /etc/apt/keyrings/docker.asc
+
+    # Add the repository to Apt sources:
+    sudo tee /etc/apt/sources.list.d/docker.sources <<EOF
+    Types: deb
+    URIs: https://download.docker.com/linux/ubuntu
+    Suites: $(. /etc/os-release && echo "${UBUNTU_CODENAME:-$VERSION_CODENAME}")
+    Components: stable
+    Signed-By: /etc/apt/keyrings/docker.asc
+    EOF
+
+    sudo apt update
+```
+
+   Instale todos os requerimentos:
+
+```bash
+    sudo apt install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+```
+
+</details>
 
 ## Instalação do Tailscale
 
