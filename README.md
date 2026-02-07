@@ -230,3 +230,38 @@ Esse comando será executado e fornecerá um URL, acesse o endereço e realize l
 
 Após acessar e realizar o login, o seu dispositivo deve aparecer em sua tailnet.
 ![imagem](https://github.com/ChancellorMarko/manual_hospedagem/blob/main/img/6_screen.png)
+
+## Instalação do Nextcloud
+
+Nesta seção serão dispostos todos os comandos para a instalação do Nextcloud All-in-One (versão docker). Todos os comandos foram baseados no [GitHub oficial](github.com/nextcloud/all-in-one) do projeto.
+
+- Instalação do Nextcloud
+
+Para realizar a instalação via Docker com Tailscale, será necessário modificar o arquivo docker-compose conforme indicado nesta [discussão do git](https://github.com/nextcloud/all-in-one/discussions/6817#discussion-8836814).
+
+Para isso, deve ser inserida uma nova seção de DNS e modificar duas configurações de ambiente.
+
+1. No arquivo do docker-compose, adicione a seguinte configuração de DNS:
+
+```bash
+  services:
+   nextcloud-aio-mastercontainer:
++    dns:
++      - 100.100.100.100  # Tailscale Magic DNS
++      - xxx.x.x.xx       # O resolverdor de dns do seu servidor no tailscale
++      - 1.1.1.1          # Fallback DNS
+```
+
+O resolvedor de DNS é o que está indicado no exemplo abaixo:
+![exemplo](https://github.com/ChancellorMarko/manual_hospedagem/blob/main/img/7_screen.png)
+
+2. Seguindo, retire a marcação de comentário "#" dos seguintes itens, como no exemplo:
+
+```bash
+     environment:
+       APACHE_PORT: 11000
+       APACHE_IP_BINDING: 127.0.0.1
+```
+
+Por fim, seu arquivo docker compose deve se assimilar ao exemplo abaixo (lembrando que o exemplo xxx.xxx.xx.xx deve ser substituído pelo endereço de seu servidor):
+![exemplo](https://github.com/ChancellorMarko/manual_hospedagem/blob/main/img/8_screen.png)
