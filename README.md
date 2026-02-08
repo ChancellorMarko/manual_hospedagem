@@ -265,3 +265,65 @@ O resolvedor de DNS é o que está indicado no exemplo abaixo:
 
 Por fim, seu arquivo docker compose deve se assimilar ao exemplo abaixo (lembrando que o exemplo xxx.xxx.xx.xx deve ser substituído pelo endereço de seu servidor):
 ![exemplo](https://github.com/ChancellorMarko/manual_hospedagem/blob/main/img/8_screen.png)
+
+- **Atenção**
+
+<details>
+<summary>Caso queira usar um armazenamento externo</summary>
+
+Caso você for usar um dispositivo de armazenamento externo, ou seja, utilizar um HD diferente para armazenar os dados do Nextcloud, siga os seguintes passos para realizar esse processo antes de realizar a instalação do container.
+
+Monte o novo dispositivo de armazenamento através da interface gráfica, lembre-se de que na maioria das vezes os diretórios são montados na pasta /mnt por padrão. Ou os comandos após esses seguintes passos:
+![exemplo](https://github.com/ChancellorMarko/manual_hospedagem/blob/main/img/9_screen.png)
+
+   1. Para realizar o processo pela interface gráfica, coloque um nome para o volume a ser montado, no caso pode ser algo como: /mnt/ncdata (como está descrito no exemplo do docker compose providenciado pelo Nextcloud);
+   2. Selecione a partição do disco na opção ao lado: novo sistema de arquivos nativo do Linux (New Linux Native Filesystem);
+   3. Marque as opções Save and Mount at Boot e Check filesystem at boot como check first.
+
+- Comandos para terminal:
+
+    Descubra qual é seu dispositivo para montar com:
+
+    ```bash
+    sudo fdisk -l
+    ```
+
+    Navegue para a pasta /mnt do sistema:
+
+    ```bash
+    cd /mnt/
+    ```
+
+    Crie um ponto para montar o dispositivo:
+
+    ```bash
+    mkdir /ncdata
+    ```
+
+    Monte o dispositivo:
+
+    ```bash
+    mount /dev/nome-do-seu-dispositivo /mnt/ncdata
+    ```
+
+Por fim, retime o marcador de comentário “#” no seguinte item do arquivo docker-compose:
+
+```bash
+    environment:
+      NEXTCLOUD_DATADIR: /mnt/ncdata
+```
+
+![exemplo](https://github.com/ChancellorMarko/manual_hospedagem/blob/main/img/10_screen.png)
+
+Apos isso, continue com o processo normalmente.
+
+[Caso tenha mais dúvidas](https://github.com/nextcloud/all-in-one#how-to-store-the-filesinstallation-on-a-separate-drive)
+</details>
+
+Por fim, inicie o container docker do Nextcloud AIO para começarmos a servilo via sua rede privada Tailscale.
+
+No mesmo diretório do arquivo docker-compose:
+
+```bash
+docker compose up -d
+```
