@@ -3,7 +3,7 @@ services:
   nextcloud-aio-mastercontainer:
     dns:
       - 100.100.100.100
-      - 100.126.35.6
+      - 100.xxx.xx.x
       - 1.1.1.1
     image: ghcr.io/nextcloud-releases/all-in-one:latest # This is the container image used. You can switch to ghcr.io/nextcloud-releases/all-in-one:beta if you want to help testing new releases. See https://github.com/nextcloud/all-in-one#how-to-switch-the-channel
     init: true # This setting makes sure that signals from main process inside the container are correctly forwarded to children. See https://docs.docker.com/reference/compose-file/services/#init
