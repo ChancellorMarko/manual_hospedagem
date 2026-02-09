@@ -249,6 +249,9 @@ Para realizar a instalação via Docker com Tailscale, será necessário modific
 
 Para isso, deve ser inserida uma nova seção de DNS e modificar duas configurações de ambiente.
 
+- **Atenção**
+   O arquivo do [docker-compose](https://github.com/ChancellorMarko/manual_hospedagem/blob/main/docker-files/docker-compose.yml), pode ser encontrado na pasta docker files desse repositório ou, se preferir, no repositório oficial [aqui](https://github.com/nextcloud/all-in-one/blob/main/compose.yaml).
+
 1. No arquivo do docker-compose, adicione a seguinte configuração de DNS:
 
 ```bash
@@ -335,3 +338,5 @@ No mesmo diretório do arquivo docker-compose:
 ```bash
 docker compose up -d
 ```
+
+Seu Nextcloud deve estar instalado e rodando agora. Porém, não finalize a instalação ainda, é necessário realizar o processo de servir o endereço ou URL do serviço do aplicativo para prosseguir com a configuração do ambiente Nextcloud.
