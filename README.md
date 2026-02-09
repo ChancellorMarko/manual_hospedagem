@@ -59,7 +59,9 @@ Com tudo funcionando corretamente, mova as chaves para a pasta onde deveriam est
 mv server-key-file-name server-key-file-name.pub ~/.ssh/
 ```
 
-### Instalação da interface web
+---
+
+## Instalação da interface web
 
 Nessa parte, será instalada uma interface para gerência do seu servidor. São vários os tipos de software que podem ser instalados para ter controle do seu servidor sem a necessidade de, todas às vezes, realizar acesso via SSH. Alguns exemplos são: [Webmin](https://webmin.com), [Ajenti](https://github.com/ajenti/ajenti), [Cockpit](https://cockpit-project.org/) ou [1Panel](https://1panel.pro/).
 
@@ -87,6 +89,8 @@ sudo apt-get install --install-recommends webmin usermin
 
 Após completar a instalação, você vai poder acessar o seu servidor via sua rede local no navegador com o endereço [https://192.168.0.xxx:10000](https://192.168.0.xxx:10000).
 Nesta interface, você poderá realizar instalação de novos aplicativos, atualizações de sistema e aplicativos, bem como controlar e configurar todas as coisas que achar necessário.
+
+---
 
 ## Instalação do Docker
 
@@ -197,6 +201,8 @@ sudo apt install docker-ce docker-ce-cli containerd.io docker-buildx-plugin dock
 
 </details>
 
+---
+
 ## Instalação do Tailscale
 
 Essa seção será destinada à instalação de uma VPN que permite que você acesse seu servidor de forma privada e segura sem a necessidade de liberar portas e lidar com problemas de firewall ou ainda utilizar um túnel Cloudflare.
@@ -231,6 +237,8 @@ Esse comando será executado e fornecerá um URL, acesse o endereço e realize l
 Após acessar e realizar o login, o seu dispositivo deve aparecer em sua tailnet.
 ![imagem](https://github.com/ChancellorMarko/manual_hospedagem/blob/main/img/6_screen.png)
 
+---
+
 ## Instalação do Nextcloud
 
 Nesta seção serão dispostos todos os comandos para a instalação do Nextcloud All-in-One (versão docker). Todos os comandos foram baseados no [GitHub oficial](github.com/nextcloud/all-in-one) do projeto.
@@ -240,6 +248,9 @@ Nesta seção serão dispostos todos os comandos para a instalação do Nextclou
 Para realizar a instalação via Docker com Tailscale, será necessário modificar o arquivo docker-compose conforme indicado nesta [discussão do git](https://github.com/nextcloud/all-in-one/discussions/6817#discussion-8836814).
 
 Para isso, deve ser inserida uma nova seção de DNS e modificar duas configurações de ambiente.
+
+- **Atenção**
+   O arquivo do [docker-compose](https://github.com/ChancellorMarko/manual_hospedagem/blob/main/docker-files/docker-compose.yml), pode ser encontrado na pasta docker files desse repositório ou, se preferir, no repositório oficial [aqui](https://github.com/nextcloud/all-in-one/blob/main/compose.yaml).
 
 1. No arquivo do docker-compose, adicione a seguinte configuração de DNS:
 
@@ -320,10 +331,12 @@ Apos isso, continue com o processo normalmente.
 [Caso tenha mais dúvidas](https://github.com/nextcloud/all-in-one#how-to-store-the-filesinstallation-on-a-separate-drive)
 </details>
 
-Por fim, inicie o container docker do Nextcloud AIO para começarmos a servilo via sua rede privada Tailscale.
+Por fim, inicie o container docker do Nextcloud AIO para começarmos a servi-lo via sua rede privada Tailscale.
 
 No mesmo diretório do arquivo docker-compose:
 
 ```bash
 docker compose up -d
 ```
+
+Seu Nextcloud deve estar instalado e rodando agora. Porém, não finalize a instalação ainda, é necessário realizar o processo de servir o endereço ou URL do serviço do aplicativo para prosseguir com a configuração do ambiente Nextcloud.
