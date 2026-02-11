@@ -19,17 +19,17 @@ Após baixar o arquivo AppImage, entre na pasta onde o arquivo foi salvo e execu
 **Passo a passo**:
 
 1. Selecione o dispositivo que irá utilizar:
-   ![exemplo](https://github.com/ChancellorMarko/manual_hospedagem/blob/main/img/1_screen.png)
+   ![exemplo](https://github.com/ChancellorMarko/manual_hospedagem_nextcloud/blob/main/img/1_screen.png)
 2. Selecione seu sistema operacional de preferência, no meu caso utilizarei outros sistemas operacionais da própria Raspberry, como o Rasp OS Lite (64 bit):
-   ![exemplo](https://github.com/ChancellorMarko/manual_hospedagem/blob/main/img/2_screen.png)
+   ![exemplo](https://github.com/ChancellorMarko/manual_hospedagem_nextcloud/blob/main/img/2_screen.png)
 3. Insira as informações pertinentes de sua preferência conforme o que for solicitado.
 4. Após configurar todas as informações pertinentes nas telas anteriores, você terá uma tela de acesso remoto que, dependendo da sua intenção, pode ser ou não interessante. Caso você queira acessar essa máquina remotamente para configuração via sua rede local (LAN), habilite a função SSH. Você tem duas opções para login via SSH:
    - Senha: com essa opção, você poderá escolher uma senha para realizar o login via sua rede, porém essa opção é insegura caso queira deixar essa máquina exposta na rede pública.
    - Chave SSH: uma das opções mais seguras caso queira deixar a máquina exposta na rede pública ou local.
-   - Passo a passo: ![Configuração SSH](https://github.com/ChancellorMarko/manual_hospedagem/blob/main/Configura%C3%A7%C3%A3o%20SSH.md).
+   - Passo a passo: ![Configuração SSH](https://github.com/ChancellorMarko/manual_hospedagem_nextcloud/blob/main/Configura%C3%A7%C3%A3o%20SSH.md).
 5. Caso queira, pode ativar a opção de Raspberry Pi Connect, no meu caso deixarei desativado.
 6. Continue para a escrita das informações no cartão SD (**Atenção: todos os dados presentes nele serão apagados**).
-   ![exemplo](https://github.com/ChancellorMarko/manual_hospedagem/blob/main/img/5_screen.png)
+   ![exemplo](https://github.com/ChancellorMarko/manual_hospedagem_nextcloud/blob/main/img/5_screen.png)
 
 ### Login via SSH
 
@@ -204,7 +204,7 @@ Esse comando será executado e fornecerá um URL, acesse o endereço e realize l
     ```
 
 Após acessar e realizar o login, o seu dispositivo deve aparecer em sua tailnet.
-![imagem](https://github.com/ChancellorMarko/manual_hospedagem/blob/main/img/6_screen.png)
+![imagem](https://github.com/ChancellorMarko/manual_hospedagem_nextcloud/blob/main/img/6_screen.png)
 
 ---
 
@@ -216,7 +216,7 @@ Para realizar a instalação via Docker com Tailscale, será necessário modific
 
 Para isso, deve ser inserida uma nova seção de DNS e modificar duas configurações de ambiente.
 
-**Atenção:** O arquivo do [docker-compose](https://github.com/ChancellorMarko/manual_hospedagem/blob/main/docker-files/docker-compose.yml), pode ser encontrado na pasta docker files desse repositório ou, se preferir, no repositório oficial [aqui](https://github.com/nextcloud/all-in-one/blob/main/compose.yaml).
+**Atenção:** O arquivo do [docker-compose](https://github.com/ChancellorMarko/manual_hospedagem_nextcloud/blob/main/docker-files/docker-compose.yml), pode ser encontrado na pasta docker files desse repositório ou, se preferir, no repositório oficial [aqui](https://github.com/nextcloud/all-in-one/blob/main/compose.yaml).
 
 1. No arquivo do docker-compose, adicione a seguinte configuração de DNS:
 
@@ -230,7 +230,7 @@ Para isso, deve ser inserida uma nova seção de DNS e modificar duas configura�
 ```
 
 O resolvedor de DNS é o que está indicado no exemplo abaixo:
-![exemplo](https://github.com/ChancellorMarko/manual_hospedagem/blob/main/img/7_screen.png)
+![exemplo](https://github.com/ChancellorMarko/manual_hospedagem_nextcloud/blob/main/img/7_screen.png)
 
 2. Seguindo, retire a marcação de comentário "#" dos seguintes itens, como no exemplo:
 
@@ -241,7 +241,7 @@ O resolvedor de DNS é o que está indicado no exemplo abaixo:
 ```
 
 Por fim, seu arquivo docker compose deve se assimilar ao exemplo abaixo (lembrando que o exemplo xxx.xxx.xx.xx deve ser substituído pelo endereço de seu servidor):
-![exemplo](https://github.com/ChancellorMarko/manual_hospedagem/blob/main/img/8_screen.png)
+![exemplo](https://github.com/ChancellorMarko/manual_hospedagem_nextcloud/blob/main/img/8_screen.png)
 
 <details>
 <summary>**Caso queira usar um armazenamento externo**</summary>
@@ -276,6 +276,24 @@ Monte o novo dispositivo de armazenamento através dos comandos após esses segu
     mount /dev/nome-do-seu-dispositivo /mnt/ncdata
     ```
 
+    Para manter a persistencia, encontre o UUID do seu drive com o comando:
+
+    ```bash
+    sudo blkid
+    ```
+
+    Edite o arquivo `fstab` com:
+
+    ```bash
+    sudo nano /etc/fstab
+    ```
+
+    Adcione no final do arquivo as seguintes informações conforme o UUID de seu armazenamento e o ponto de montagem:
+
+    ```bash
+    UUID=numero-uuid /mnt/ncdata ext4 defaults 0 2
+    ```
+
 Por fim, retire o marcador de comentário “#” no seguinte item do arquivo docker-compose:
 
 ```bash
@@ -283,7 +301,7 @@ Por fim, retire o marcador de comentário “#” no seguinte item do arquivo do
       NEXTCLOUD_DATADIR: /mnt/ncdata
 ```
 
-![exemplo](https://github.com/ChancellorMarko/manual_hospedagem/blob/main/img/9_screen.png)
+![exemplo](https://github.com/ChancellorMarko/manual_hospedagem_nextcloud/blob/main/img/9_screen.png)
 
 Apos isso, continue com o processo normalmente.
 
